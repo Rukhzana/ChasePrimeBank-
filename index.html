@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chase Prime Bank | Afspraak maken</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="auth-screen" id="auth-screen">
+        <div class="auth-card">
+            <a class="brand auth-brand" href="#home" aria-label="Chase Prime Bank">
+                <img class="brand-logo" src="logo.svg" alt="Chase Prime Bank logo">
+                <span>
+                    <strong>Chase Prime</strong>
+                    <small>Secure appointment access</small>
+                </span>
+            </a>
+
+            <div class="language-box">
+                <label for="language-select-auth">Taal kiezen</label>
+                <select id="language-select-auth" class="language-select">
+                    <option value="">Nederlands</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="pt">Português</option>
+                    <option value="de">Deutsch</option>
+                    <option value="zh-CN">中文</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="ar">العربية</option>
+                </select>
+            </div>
+
+            <div class="auth-copy">
+                <span class="eyebrow">Welkom terug</span>
+                <h1 id="auth-title">Log in om verder te gaan</h1>
+                <p id="auth-text">Gebruik uw e-mail en wachtwoord om uw afspraken veilig te beheren.</p>
+            </div>
+
+            <form id="login-form" class="auth-form">
+                <label for="login-email">E-mail</label>
+                <input id="login-email" name="email" type="email" placeholder="naam@email.com" autocomplete="email" required>
+
+                <label for="login-password">Wachtwoord</label>
+                <input id="login-password" name="password" type="password" placeholder="Uw wachtwoord" autocomplete="current-password" required>
+
+                <label class="check-row" for="remember-login">
+                    <input id="remember-login" name="remember" type="checkbox">
+                    <span>Mijn e-mail en wachtwoord opslaan voor volgende keer</span>
+                </label>
+
+                <button type="submit" class="submit-button">Inloggen</button>
+            </form>
+
+            <form id="forgot-password-form" class="auth-form hidden">
+                <label for="forgot-email">E-mail</label>
+                <input id="forgot-email" name="email" type="email" placeholder="naam@email.com" autocomplete="email" required>
+
+                <label for="forgot-password">Nieuw wachtwoord</label>
+                <input id="forgot-password" name="password" type="password" placeholder="Nieuw wachtwoord" autocomplete="new-password" minlength="4" required>
+
+                <button type="submit" class="submit-button">Wachtwoord wijzigen</button>
+            </form>
+
+            <form id="create-account-form" class="auth-form hidden">
+                <label for="create-name">Naam</label>
+                <input id="create-name" name="name" type="text" placeholder="Uw naam" autocomplete="name" required>
+
+                <label for="create-email">E-mail</label>
+                <input id="create-email" name="email" type="email" placeholder="naam@email.com" autocomplete="email" required>
+
+                <label for="create-password">Wachtwoord</label>
+                <input id="create-password" name="password" type="password" placeholder="Maak een wachtwoord" autocomplete="new-password" minlength="4" required>
+
+                <label class="check-row" for="remember-create">
+                    <input id="remember-create" name="remember" type="checkbox">
+                    <span>Mijn e-mail en wachtwoord opslaan voor volgende keer</span>
+                </label>
+
+                <button type="submit" class="submit-button">Account maken</button>
+            </form>
+
+            <p class="auth-switch">
+                <span id="auth-switch-text">Nog geen account?</span>
+                <button type="button" id="toggle-auth">Maak een account aan</button>
+            </p>
+
+            <p class="auth-switch auth-help">
+                <button type="button" id="forgot-password-button">Wachtwoord vergeten?</button>
+            </p>
+        </div>
+    </section>
+
+    <header class="site-header protected hidden">
+        <a class="brand" href="#home" aria-label="Chase Prime Bank home">
+            <img class="brand-logo" src="logo.svg" alt="Chase Prime Bank logo">
+            <span>
+                <strong>Chase Prime</strong>
+                <small>Bank appointments</small>
+            </span>
+        </a>
+        <nav class="nav-links" aria-label="Hoofdnavigatie">
+            <a href="#home">Home</a>
+            <a href="#afspraken">Afspraken</a>
+            <a href="#about">Over ons</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <div class="language-box compact">
+                <label for="language-select-header">Taal</label>
+                <select id="language-select-header" class="language-select">
+                    <option value="">NL</option>
+                    <option value="en">EN</option>
+                    <option value="es">ES</option>
+                    <option value="fr">FR</option>
+                    <option value="pt">PT</option>
+                    <option value="de">DE</option>
+                    <option value="zh-CN">中文</option>
+                    <option value="hi">HI</option>
+                    <option value="ar">AR</option>
+                </select>
+            </div>
+            <button type="button" class="logout-button" id="logout-button">Uitloggen</button>
+        </div>
+    </header>
+
+    <main class="protected hidden">
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <span class="eyebrow">Snel geregeld, persoonlijk geholpen</span>
+                <h1>Plan uw bankafspraak zonder wachtrij.</h1>
+                <p>Reserveer eenvoudig een moment voor kassa, snel kas, retail banking of klantenservice. U kiest een tijd, vult uw gegevens in en ziet uw afspraak direct terug.</p>
+                <div class="hero-actions">
+                    <a class="cta-button" href="#afspraken">Maak een afspraak</a>
+                    <a class="secondary-link" href="#contact">Neem contact op</a>
+                </div>
+            </div>
+
+            <aside class="hero-card" aria-label="Openingstijden">
+                <div class="status-pill">Vandaag open</div>
+                <h2>Openingstijden</h2>
+                <dl class="hours-list">
+                    <div>
+                        <dt>Ma - Vr</dt>
+                        <dd>07:30 - 15:00</dd>
+                    </div>
+                    <div>
+                        <dt>Za</dt>
+                        <dd>09:00 - 14:00</dd>
+                    </div>
+                    <div>
+                        <dt>Zo</dt>
+                        <dd>Gesloten</dd>
+                    </div>
+                </dl>
+                <div class="quick-info">
+                    <span>Leiding 11 A</span>
+                    <span>Paramaribo</span>
+                </div>
+            </aside>
+        </section>
+
+        <section class="appointment-panel" id="afspraken">
+            <div class="panel panel-form">
+                <div class="section-heading">
+                    <span>Afspraak</span>
+                    <h2>Maak een afspraak</h2>
+                    <p>Vul uw gegevens in en kies de service die u nodig heeft.</p>
+                </div>
+
+                <form id="appointment-form">
+                    <label for="name">Naam</label>
+                    <input id="name" name="name" type="text" placeholder="Uw naam" required>
+
+                    <div class="split-inputs">
+                        <div>
+                            <label for="email">E-mail</label>
+                            <input id="email" name="email" type="email" placeholder="naam@email.com" required>
+                        </div>
+                        <div>
+                            <label for="phone">Telefoonnummer</label>
+                            <input id="phone" name="phone" type="tel" placeholder="+597 884 7775" required>
+                        </div>
+                    </div>
+
+                    <label for="service">Soort afspraak</label>
+                    <select id="service" name="service" required>
+                        <option value="">Kies een optie</option>
+                        <option value="Kassa">Kassa</option>
+                        <option value="Snel Kas">Snel Kas</option>
+                        <option value="Retail banking">Retail banking</option>
+                        <option value="Klantenservice">Klantenservice</option>
+                    </select>
+
+                    <div class="split-inputs">
+                        <div>
+                            <label for="date">Datum</label>
+                            <input id="date" name="date" type="date" required>
+                        </div>
+                        <div>
+                            <label for="time">Tijd</label>
+                            <select id="time" name="time" required>
+                                <option value="">Kies een tijd</option>
+                                <option value="07:30">07:30</option>
+                                <option value="08:00">08:00</option>
+                                <option value="08:30">08:30</option>
+                                <option value="09:00">09:00</option>
+                                <option value="09:30">09:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label for="notes">Opmerkingen</label>
+                    <textarea id="notes" name="notes" maxlength="100" placeholder="Extra informatie..."></textarea>
+                    <div class="char-counter" id="notes-counter">0 / 100 tekens</div>
+
+                    <button type="submit" class="submit-button">Afspraak aanvragen</button>
+                </form>
+            </div>
+
+            <aside class="panel panel-list">
+                <div class="section-heading">
+                    <span>Overzicht</span>
+                    <h2>Uw geplande afspraken</h2>
+                    <p>Nieuwe aanvragen verschijnen automatisch in deze lijst.</p>
+                </div>
+                <div id="appointments-list" class="appointments-list">
+                    <p class="empty-state">Nog geen afspraken gepland.</p>
+                </div>
+            </aside>
+        </section>
+
+        <section class="info-grid" id="about">
+            <article class="panel">
+                <div class="section-heading">
+                    <span>Over ons</span>
+                    <h2>Betrouwbare service, duidelijk gepland</h2>
+                </div>
+                <p>Chase Prime Bank helpt klanten sneller aan de juiste balie door afspraken helder en overzichtelijk te plannen.</p>
+                <ul class="feature-list">
+                    <li>Heldere tijdslots voor elk type afspraak</li>
+                    <li>Direct overzicht van geplande aanvragen</li>
+                    <li>Persoonlijke ondersteuning in Paramaribo</li>
+                </ul>
+            </article>
+
+            <article class="panel contact-card" id="contact">
+                <div class="section-heading">
+                    <span>Contact</span>
+                    <h2>Stuur een bericht</h2>
+                    <p>Heeft u vragen? Laat uw gegevens achter en wij nemen contact op.</p>
+                </div>
+
+                <form id="contact-form">
+                    <label for="c-name">Naam</label>
+                    <input id="c-name" name="name" type="text" placeholder="Uw naam" required>
+
+                    <label for="c-email">E-mail</label>
+                    <input id="c-email" name="email" type="email" placeholder="naam@email.com" required>
+
+                    <label for="c-message">Bericht</label>
+                    <textarea id="c-message" name="message" maxlength="100" placeholder="Uw bericht..." required></textarea>
+                    <div class="char-counter" id="message-counter">0 / 100 tekens</div>
+
+                    <button type="submit" class="submit-button">Verstuur via WhatsApp</button>
+                </form>
+
+                <div class="contact-details">
+                    <p><strong>WhatsApp:</strong> +597 884-7775</p>
+                    <p><strong>E-mail:</strong> chaseprimebank@gmail.com</p>
+                    <p><strong>Locatie:</strong> Leiding 11 A, Paramaribo</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer protected hidden">
+        <p>Chase Prime Bank - Established in 2026</p>
+    </footer>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    <div id="google_translate_element" class="translate-widget" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: "nl",
+                autoDisplay: false
+            }, "google_translate_element");
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

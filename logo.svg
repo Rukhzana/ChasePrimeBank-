@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 448" role="img" aria-labelledby="title desc">
+  <title id="title">Chase Prime Bank logo</title>
+  <desc id="desc">Bankgebouw icoon met de tekst Chase Prime Bank.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#101a2b"/>
+      <stop offset="1" stop-color="#0d1727"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" x2="1">
+      <stop offset="0" stop-color="#788294"/>
+      <stop offset="0.28" stop-color="#f8fafc"/>
+      <stop offset="0.5" stop-color="#b9c0cc"/>
+      <stop offset="0.74" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#697386"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="600" height="448" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <path d="M168 148h264v7H168z" fill="url(#silver)"/>
+    <path d="M300 108 166 146h268L300 108zm0 9 92 26H208l92-26z" fill="url(#silver)"/>
+    <path d="M182 163h78v10h-78zM340 163h78v10h-78zM176 262h88v7h-88zM336 262h88v7h-88z" fill="#566176"/>
+    <g fill="url(#silver)">
+      <path d="M188 172h25v84h-25zM230 172h25v84h-25zM345 172h25v84h-25zM388 172h25v84h-25z"/>
+      <path d="M182 158h39l-7 9h-25zM224 158h39l-7 9h-25zM340 158h39l-7 9h-25zM382 158h39l-7 9h-25z"/>
+      <path d="M185 256h32v8h-32zM227 256h32v8h-32zM342 256h32v8h-32zM385 256h32v8h-32z"/>
+    </g>
+    <path d="M263 263v-70c0-36 23-58 58-58s58 22 58 58v70h-10v-70c0-30-18-49-48-49s-48 19-48 49v70h-10z" fill="url(#silver)"/>
+  </g>
+  <text x="300" y="329" text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="45" letter-spacing="7">CHASE</text>
+  <text x="300" y="369" text-anchor="middle" fill="#9aa3b5" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="19">PRIME BANK</text>
+</svg>
