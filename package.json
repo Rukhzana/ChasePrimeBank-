@@ -1,0 +1,17 @@
+{
+  "name": "chase-prime-bank",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.5",
+    "nodemailer": "^6.9.16",
+    "resend": "^4.0.1"
+  },
+  "devDependencies": {
+    "vercel": "^39.2.2"
+  }
+}

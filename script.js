@@ -20,6 +20,7 @@ const loginPassword = document.querySelector("#login-password");
 const rememberLogin = document.querySelector("#remember-login");
 const languageSelects = document.querySelectorAll(".language-select");
 const whatsappNumber = "5978847775";
+const apiBaseUrl = String(window.CHASE_API_URL || "").replace(/\/$/, "");
 
 const storageKey = "chase-prime-appointments";
 const usersKey = "chase-prime-users";
@@ -142,28 +143,73 @@ function renderAppointments() {
     });
 }
 
-appointmentForm?.addEventListener("submit", (event) => {
+async function sendAppointmentToBackend(appointment) {
+    const isServedFromWebsite = window.location.protocol === "http:" || window.location.protocol === "https:";
+    const url = apiBaseUrl
+        ? `${apiBaseUrl}/api/appointments`
+        : isServedFromWebsite
+            ? "/api/appointments"
+            : "";
+
+    if (!url) {
+        return {
+            ok: false,
+            localOnly: true,
+            message: "Open de website via de back-end server om automatisch e-mail te versturen."
+        };
+    }
+
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(appointment)
+    });
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok || !result.ok) {
+        throw new Error(result.message || "De bevestigingsmail kon niet worden verstuurd.");
+    }
+
+    return result;
+}
+
+appointmentForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const data = new FormData(appointmentForm);
+    const appointment = {
+        name: data.get("name"),
+        email: data.get("email"),
+        phone: data.get("phone"),
+        service: data.get("service"),
+        date: data.get("date"),
+        time: data.get("time"),
+        notes: data.get("notes")
+    };
 
-    appointments = [
-        {
-            name: data.get("name"),
-            email: data.get("email"),
-            phone: data.get("phone"),
-            service: data.get("service"),
-            date: data.get("date"),
-            time: data.get("time"),
-            notes: data.get("notes")
-        },
-        ...appointments
-    ];
+    try {
+        const result = await sendAppointmentToBackend(appointment);
 
-    localStorage.setItem(storageKey, JSON.stringify(appointments));
-    appointmentForm.reset();
-    updateCounter(notes, "#notes-counter");
-    renderAppointments();
-    showToast("Uw afspraak is toegevoegd.");
+        appointments = [
+            appointment,
+            ...appointments
+        ];
+
+        localStorage.setItem(storageKey, JSON.stringify(appointments));
+        appointmentForm.reset();
+        updateCounter(notes, "#notes-counter");
+        renderAppointments();
+
+        if (result.localOnly) {
+            showToast("Afspraak lokaal toegevoegd. Start de back-end voor automatische e-mail.");
+            return;
+        }
+
+        showToast("Afspraak bevestigd. De bevestigingsmail is verstuurd.");
+    } catch (error) {
+        showToast(error.message || "De afspraak kon niet worden verwerkt.");
+    }
 });
 
 loginForm?.addEventListener("submit", (event) => {
